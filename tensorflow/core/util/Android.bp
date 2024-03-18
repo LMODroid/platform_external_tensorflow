@@ -63,6 +63,6 @@ filegroup(
         "sparse/sparse_tensor.cc",
         "tensor_bundle/naming.cc",
         "tensor_bundle/tensor_bundle.cc",
-
+        "tensor_bundle/byte_swap.cc",
     ],
 )

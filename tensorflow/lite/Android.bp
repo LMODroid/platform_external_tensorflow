@@ -155,6 +155,47 @@ cc_library_shared {
     stl: "libc++_static",
 }
 
+cc_library_shared {
+    name: "libtensorflowlite_jni",
+    sdk_version: "current",
+    min_sdk_version: "30",
+    export_include_dirs: [
+        "delegates/nnapi/java/src/main/native/",
+        "java/src/main/native/",
+    ],
+    srcs: [
+        "delegates/nnapi/java/src/main/native/*.cc",
+        "java/src/main/native/*.cc",
+    ],
+    header_libs: [
+        "flatbuffer_headers",
+        "jni_headers",
+        "tensorflow_headers",
+    ],
+    static_libs: [
+        "libruy_static",
+        "libtflite_static",
+    ],
+    shared_libs: [
+        "liblog",
+    ],
+    cflags: [
+        "-Wno-unused-function",
+        "-Wno-unused-parameter",
+    ],
+    ldflags: [
+        // Allow (benign) missing symbols referenced in the version script.
+        "-Wl,--undefined-version",
+    ],
+    version_script: "java/tflite_version_script.lds",
+    stl: "libc++_static",
+    apex_available: [
+        "//apex_available:platform",
+        "com.android.adservices",
+        "com.android.extservices",
+    ],
+}
+
 cc_library_static {
     name: "tflite_mutable_op_resolver",
     defaults: ["tflite_defaults"],

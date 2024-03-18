@@ -42,7 +42,6 @@ limitations under the License.
 #include "tensorflow/core/lib/hash/hash.h"
 #include "tensorflow/core/lib/strings/proto_serialization.h"
 #include "tensorflow/core/platform/host_info.h"
-#include "tensorflow/core/platform/regexp.h"
 #include "tensorflow/core/util/determinism.h"
 #include "tensorflow/core/util/work_sharder.h"
 

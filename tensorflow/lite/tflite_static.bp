@@ -13,13 +13,9 @@
 // limitations under the License.
 
 // Create a static version for apps to use.
-cc_library_static {
-    name: "libtflite_static",
-    host_supported: true,
-    vendor_available: true,
-    sdk_version: "current",
-    min_sdk_version: "30",
-    srcs: [
+filegroup(
+    name = "tflite_src",
+    srcs = [
         ":tensorflow_tsl_logging_srcs",
         "allocation.cc",
         "arena_planner.cc",
@@ -200,6 +196,17 @@ cc_library_static {
         "tools/versioning/op_signature.cc",
         "tools/versioning/op_version.cc",
         "util.cc",
+    ],
+)
+
+cc_library_static {
+    name: "libtflite_static",
+    host_supported: true,
+    vendor_available: true,
+    sdk_version: "current",
+    min_sdk_version: "30",
+    srcs: [
+        ":tflite_src",
     ],
     header_libs: [
         "fp16_headers",

@@ -16,10 +16,11 @@ limitations under the License.
 #ifndef TENSORFLOW_CORE_PLATFORM_TEST_H_
 #define TENSORFLOW_CORE_PLATFORM_TEST_H_
 
+#include <gtest/gtest.h>  // IWYU pragma: export
+
 #include <memory>
 #include <vector>
 
-#include <gtest/gtest.h>  // IWYU pragma: export
 #include "tensorflow/core/platform/macros.h"
 #include "tensorflow/core/platform/platform.h"
 #include "tensorflow/core/platform/types.h"
@@ -39,7 +40,8 @@ limitations under the License.
 // The advantages of using gmock matchers instead of self defined matchers are
 // better error messages, more maintainable tests and more test coverage.
 #if !defined(PLATFORM_GOOGLE) && !defined(PLATFORM_GOOGLE_ANDROID) && \
-    !defined(PLATFORM_CHROMIUMOS)
+    !defined(PLATFORM_CHROMIUMOS) &&                                  \
+    !defined(IS_MOBILE_PLATFORM)  // We have gmock.h in AOSP.
 #include <gmock/gmock-generated-matchers.h>
 #include <gmock/gmock-matchers.h>
 #include <gmock/gmock-more-matchers.h>

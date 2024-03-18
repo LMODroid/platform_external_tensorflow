@@ -21,37 +21,16 @@ package {
     default_applicable_licenses: ["external_tensorflow_license"],
 }
 
-cc_library_static {
-    name: "libtflite_flex_delegate_only_runtime",
-    //defaults: ["tflite_defaults"],
-    srcs: [
+filegroup(
+    name = "tflite_flex_delegate",
+    srcs = [
         "flex/buffer_map.cc",
         "flex/buffer_map_util.cc",
         "flex/delegate.cc",
         "flex/delegate_data.cc",
         "flex/kernel.cc",
         "flex/util.cc",
+        "flex/tflite_subgraph_execute.cc",
         "utils/simple_delegate.cc",
     ],
-    static_libs: [
-        "tensorflow_abseil",
-        "tensorflow_core_proto_cpp_lite",
-        "libtensorflow_core_mobile_srcs_only_runtime",
-    ],
-    header_libs: [
-        "flatbuffer_headers",
-        "libeigen",
-        "libtextclassifier_hash_headers",
-        "tensorflow_headers",
-    ],
-    cflags: [
-        "-DNAMESPACE_FOR_HASH_FUNCTIONS=farmhash",
-        "-Wno-defaulted-function-deleted",
-        "-Wno-unused-const-variable",
-        "-Wno-unused-but-set-variable",
-        "-Wno-unused-parameter",
-        "-Wno-missing-field-initializers",
-        "-Wno-ignored-qualifiers",
-        "-Wno-mismatched-tags",
-    ],
-}
+)

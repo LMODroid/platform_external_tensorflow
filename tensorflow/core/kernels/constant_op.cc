@@ -24,7 +24,6 @@ limitations under the License.
 
 #include "tensorflow/core/kernels/constant_op.h"
 
-#include "third_party/eigen3/unsupported/Eigen/CXX11/Tensor"
 #include "tensorflow/core/framework/allocator.h"
 #include "tensorflow/core/framework/bounds_check.h"
 #include "tensorflow/core/framework/node_def.pb.h"

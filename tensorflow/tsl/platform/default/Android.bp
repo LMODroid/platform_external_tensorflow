@@ -25,12 +25,10 @@ filegroup(
     name = "tensorflow_tsl_platform_default_mobile_srcs_no_runtime",
     srcs = [
         "env.cc",
-        "env_time.cc",
         "load_library.cc",
         "port.cc",
         "posix_file_system.cc",
         "resource.cc",
-        "logging.cc",
     ],
 )
 
