@@ -343,3 +343,13 @@ java_library_static {
     min_sdk_version: "33",
     apex_available: ["com.android.ondevicepersonalization"],
 }
+
+// Clients that want to link in custom ops/delegates need to manually link in the JNI bridge
+// to their own custom shared libraries.
+filegroup {
+    name: "tensorflowlite_jni_src",
+    srcs: ["tensorflow/lite/java/src/main/native/*.cc"],
+    visibility: [
+        "//packages/modules/OnDevicePersonalization:__subpackages__",
+    ],
+}
